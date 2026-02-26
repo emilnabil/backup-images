@@ -267,7 +267,8 @@ urls=(
 "https://dreambox4u.com/emilnabil237/plugins/ArabicSavior/installer.sh"
 "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/cccaminfo/cccaminfo_${PYTHON,,}.sh"
 "https://dreambox4u.com/emilnabil237/plugins/crashlogviewer/CrashLogViewer.sh"
-"https://github.com/emilnabil/download-plugins/raw/refs/heads/main/EmilPanel/emilpanel.sh" "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/EmilPanelPro/emilpanelpro.sh"
+"https://github.com/emilnabil/download-plugins/raw/refs/heads/main/EmilPanel/emilpanel.sh"
+"https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/EmilPanelPro/emilpanelpro.sh"
 "https://dreambox4u.com/emilnabil237/plugins/Epg-Grabber/installer.sh"
 "https://dreambox4u.com/emilnabil237/plugins/iptosat/installer.sh"
 "https://dreambox4u.com/emilnabil237/plugins/ipaudio/ipaudio-$IPAUDIO_VER.sh"
@@ -283,6 +284,7 @@ urls=(
 "https://dreambox4u.com/emilnabil237/emu/installer-cccam.sh"
 "https://dreambox4u.com/emilnabil237/emu/installer-ncam.sh"
 "https://dreambox4u.com/emilnabil237/emu/installer-oscam.sh"
+"https://github.com/emilnabil/channel-emil-nabil/raw/refs/heads/main/installer.sh"
 )
 for url in "${urls[@]}"; do
 run_script "$url"
@@ -304,8 +306,4 @@ fi
 echo "Script finished at: $(date)" >&3
 
 exit 0
-
-
-
-
 
