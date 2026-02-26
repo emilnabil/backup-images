@@ -1,5 +1,5 @@
 #!/bin/sh
-## setup command=wget https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openatv_7.6.sh -O - | /bin/sh
+## setup command=wget https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openatv/backup-openatv_7.6.sh -O - | /bin/sh
 ##################################
 
 # Download and extract the package
@@ -7,7 +7,7 @@ cd /tmp || exit 1
 
 echo "Downloading package ..."
 curl -k -L --connect-timeout 60 --max-time 600 \
-"https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openatv_7.6.tar.gz" \
+"https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openatv/backup-openatv_7.6.tar.gz" \
 -o backup-openatv_7.6.tar.gz
 
 echo "Installing ...."
@@ -304,6 +304,7 @@ fi
 echo "Script finished at: $(date)" >&3
 
 exit 0
+
 
 
 
