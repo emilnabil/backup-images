@@ -289,7 +289,7 @@ urls=(
     "https://dreambox4u.com/emilnabil237/emu/installer-cccam.sh"
     "https://dreambox4u.com/emilnabil237/emu/installer-ncam.sh"
     "https://dreambox4u.com/emilnabil237/emu/installer-oscam.sh"
-    "https://github.com/emilnabil/channel-emil-nabil/raw/refs/heads/main/installer.sh"
+    "https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openatv/channel.sh"
 )
 
 for url in "${urls[@]}"; do
@@ -316,4 +316,6 @@ fi
 echo "Script finished at: $(date)" >&3
 
 exit 0
+
+
 
