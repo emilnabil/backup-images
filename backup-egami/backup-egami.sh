@@ -1,5 +1,5 @@
 #!/bin/bash
-## setup command=wget https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openatv/backup-openatv_7.6.sh -O - | /bin/sh
+## setup command=wget https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-egami/backup-egami.sh -O - | /bin/sh
 ##################################
 reboot() { :; }
 init() { :; }
@@ -154,7 +154,6 @@ urls=(
     "https://dreambox4u.com/emilnabil237/emu/installer-cccam.sh"
     "https://dreambox4u.com/emilnabil237/emu/installer-ncam.sh"
     "https://dreambox4u.com/emilnabil237/emu/installer-oscam.sh"
-    "https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openatv/channel.sh"
 )
 
 set +e
@@ -179,12 +178,12 @@ cd /tmp || { echo "⚠ Failed to change to /tmp directory" >&3; exit 1; }
 
 echo "Downloading package ..." >&3
 if curl -k -L --connect-timeout 60 --max-time 600 \
-    "https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openatv/backup-openatv_7.6.tar.gz" \
-    -o backup-openatv_7.6.tar.gz 2>/dev/null; then
+    "https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-egami/backup-egami.tar.gz" \
+    -o backup-egami.tar.gz 2>/dev/null; then
     
-    if [ -s backup-openatv_7.6.tar.gz ]; then
+    if [ -s backup-egami.tar.gz ]; then
         echo "Installing ...." >&3
-        if tar -xzf backup-openatv_7.6.tar.gz -C / 2>/dev/null; then
+        if tar -xzf backup-egami.tar.gz -C / 2>/dev/null; then
             echo "✔ Extraction completed" >&3
         else
             echo "⚠ Failed to extract package" >&3
@@ -197,7 +196,7 @@ else
 fi
 
 echo "Cleaning up..." >&3
-rm -f backup-openatv_7.6.tar.gz
+rm -f backup-egami.tar.gz
 
 echo "Done ✔" >&3
 echo "#>>>>>> Uploaded By Emil Nabil <<<<<<<#" >&3
@@ -232,4 +231,6 @@ fi
 echo "Script finished at: $(date)" >&3
 
 exit 0
+
+
 
