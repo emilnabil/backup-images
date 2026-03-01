@@ -152,8 +152,6 @@ urls=(
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/SmartAddonspanel/smart-Panel.sh"
     "https://dreambox4u.com/emilnabil237/plugins/xtreamity/installer.sh"
 
-"https://gitlab.com/emilnabil1/teamnitro/-/raw/main/installer.sh"
-
 "https://raw.githubusercontent.com/popking159/skins/refs/heads/main/aglarepli/installer.sh"
     "https://dreambox4u.com/emilnabil237/emu/installer-cccam.sh"
     "https://dreambox4u.com/emilnabil237/emu/installer-ncam.sh"
@@ -235,6 +233,7 @@ fi
 echo "Script finished at: $(date)" >&3
 
 exit 0
+
 
 
 
