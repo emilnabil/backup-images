@@ -155,7 +155,7 @@ urls=(
 "https://raw.githubusercontent.com/popking159/skins/refs/heads/main/aglarepli/installer.sh"
     "https://dreambox4u.com/emilnabil237/emu/installer-cccam.sh"
     "https://dreambox4u.com/emilnabil237/emu/installer-ncam.sh"
-    "https://dreambox4u.com/emilnabil237/emu/installer-oscam.sh"
+    "https://raw.githubusercontent.com/levi-45/Levi45Emulator/main/installer.sh"
 )
 
 set +e
@@ -233,6 +233,7 @@ fi
 echo "Script finished at: $(date)" >&3
 
 exit 0
+
 
 
 
