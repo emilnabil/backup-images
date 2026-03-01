@@ -1,5 +1,5 @@
 #!/bin/bash
-## setup command=wget https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-egami/backup-egami.sh -O - | /bin/sh
+## setup command=wget https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openbh/backup-openbh.sh -O - | /bin/sh
 ##################################
 reboot() { :; }
 init() { :; }
@@ -182,12 +182,12 @@ cd /tmp || { echo "⚠ Failed to change to /tmp directory" >&3; exit 1; }
 
 echo "Downloading package ..." >&3
 if curl -k -L --connect-timeout 60 --max-time 600 \
-    "https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-egami/backup-egami.tar.gz" \
-    -o backup-egami.tar.gz 2>/dev/null; then
+    "https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openbh/backup-openbh.tar.gz" \
+    -o backup-openbh.tar.gz 2>/dev/null; then
     
-    if [ -s backup-egami.tar.gz ]; then
+    if [ -s backup-openbh.tar.gz ]; then
         echo "Installing ...." >&3
-        if tar -xzf backup-egami.tar.gz -C / 2>/dev/null; then
+        if tar -xzf backup-openbh.tar.gz -C / 2>/dev/null; then
             echo "✔ Extraction completed" >&3
         else
             echo "⚠ Failed to extract package" >&3
@@ -200,7 +200,7 @@ else
 fi
 
 echo "Cleaning up..." >&3
-rm -f backup-egami.tar.gz
+rm -f backup-openbh.tar.gz
 
 echo "Done ✔" >&3
 echo "#>>>>>> Uploaded By Emil Nabil <<<<<<<#" >&3
@@ -235,6 +235,7 @@ fi
 echo "Script finished at: $(date)" >&3
 
 exit 0
+
 
 
 
