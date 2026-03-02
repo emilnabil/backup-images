@@ -146,14 +146,15 @@ urls=(
     "https://dreambox4u.com/emilnabil237/KeyAdder/installer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MultiCamAdder/installer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MultiIptvAdder/installer.sh"
-    "https://raw.githubusercontent.com/emilnabil/multi-stalkerpro/main/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/NewVirtualKeyBoard/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/RaedQuickSignal/installer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/SmartAddonspanel/smart-Panel.sh"
     "https://dreambox4u.com/emilnabil237/plugins/xtreamity/installer.sh"
+
+"https://raw.githubusercontent.com/emilnabil/channel-emil-nabil/main/installer.sh"
     "https://dreambox4u.com/emilnabil237/emu/installer-cccam.sh"
     "https://dreambox4u.com/emilnabil237/emu/installer-ncam.sh"
-    "https://dreambox4u.com/emilnabil237/emu/installer-oscam.sh"
+    "https://raw.githubusercontent.com/levi-45/Levi45Emulator/main/installer.sh"
 )
 
 set +e
@@ -231,6 +232,8 @@ fi
 echo "Script finished at: $(date)" >&3
 
 exit 0
+
+
 
 
 
