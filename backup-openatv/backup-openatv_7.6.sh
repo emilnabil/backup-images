@@ -135,6 +135,8 @@ urls=(
     "http://dreambox4u.com/emilnabil237/plugins/ajpanel/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/ajpanel/new/emil-panel-lite.sh"
     "https://dreambox4u.com/emilnabil237/plugins/ArabicSavior/installer.sh"
+
+"http://dreambox4u.com/emilnabil237/script/bootlogoswapper-Atv.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/cccaminfo/cccaminfo_${PYTHON,,}.sh"
     "https://dreambox4u.com/emilnabil237/plugins/crashlogviewer/CrashLogViewer.sh"
     "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/EmilPanel/emilpanel.sh"
@@ -149,6 +151,12 @@ urls=(
     "https://dreambox4u.com/emilnabil237/plugins/NewVirtualKeyBoard/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/RaedQuickSignal/installer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/SmartAddonspanel/smart-Panel.sh"
+
+"https://raw.githubusercontent.com/popking159/skins/refs/heads/main/aglareatv/installer.sh"
+
+"https://raw.githubusercontent.com/islam-2412/IPKS/refs/heads/main/fury/installer.sh"
+
+"https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MyMetrixLiteBackup.sh"
     "https://dreambox4u.com/emilnabil237/plugins/xtreamity/installer.sh"
 
 "https://raw.githubusercontent.com/emilnabil/channel-emil-nabil/main/installer.sh"
@@ -173,31 +181,6 @@ set -e
 echo "" >&3
 echo "==> Cleaning temporary files..." >&3
 find /tmp -name "plugin_installer_*.sh" -delete 2>/dev/null && echo "✔ Temporary files cleaned" >&3 || echo "⚠ No temporary files found to clean" >&3
-
-echo "" >&3
-cd /tmp || { echo "⚠ Failed to change to /tmp directory" >&3; exit 1; }
-
-echo "Downloading package ..." >&3
-if curl -k -L --connect-timeout 60 --max-time 600 \
-    "https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openatv/backup-openatv_7.6.tar.gz" \
-    -o backup-openatv_7.6.tar.gz 2>/dev/null; then
-    
-    if [ -s backup-openatv_7.6.tar.gz ]; then
-        echo "Installing ...." >&3
-        if tar -xzf backup-openatv_7.6.tar.gz -C / 2>/dev/null; then
-            echo "✔ Extraction completed" >&3
-        else
-            echo "⚠ Failed to extract package" >&3
-        fi
-    else
-        echo "⚠ Downloaded file is empty" >&3
-    fi
-else
-    echo "⚠ Failed to download package" >&3
-fi
-
-echo "Cleaning up..." >&3
-rm -f backup-openatv_7.6.tar.gz
 
 echo "Done ✔" >&3
 echo "#>>>>>> Uploaded By Emil Nabil <<<<<<<#" >&3
@@ -232,6 +215,3 @@ fi
 echo "Script finished at: $(date)" >&3
 
 exit 0
-
-
-
