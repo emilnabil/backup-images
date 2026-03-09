@@ -1,30 +1,7 @@
 #!/bin/bash
 ## setup command=wget https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openatv/backup-openatv_7.6.sh -O - | /bin/sh
 ##################################
-reboot() { :; }
-init() { :; }
-shutdown() { :; }
-killall() {
-    for arg in "$@"; do
-        if [ "$arg" = "enigma2" ]; then
-            return 0
-        fi
-    done
-    return 0
-}
-systemctl() {
-    case "$1" in
-        reboot|poweroff|halt|shutdown|restart)
-            return 0
-            ;;
-        *)
-            command systemctl "$@"
-            ;;
-    esac
-}
-export -f reboot init shutdown killall systemctl
 
-DISABLE_RESTART=false
 LOG_FILE="/tmp/superscript_$(date +%F_%H-%M-%S).log"
 exec 3>&1 1>>"$LOG_FILE" 2>&1
 trap 'echo "⚠ Script interrupted. Check $LOG_FILE for details." >&3' INT TERM
@@ -74,7 +51,8 @@ echo "==> Updating feed and packages..." >&3
 if wget -q --timeout=10 --tries=2 "https://raw.githubusercontent.com/emil237/updates-enigma/main/update-all-python.sh" -O /tmp/update-all-python.sh; then
     if [ -s /tmp/update-all-python.sh ]; then
         chmod +x /tmp/update-all-python.sh
-        (bash /tmp/update-all-python.sh) >&3 2>&1
+        
+        bash /tmp/update-all-python.sh >&3 2>&1
         rm -f /tmp/update-all-python.sh
     else
         echo "⚠ Update script is empty" >&3
@@ -88,9 +66,9 @@ IPAUDIO_VER="8.2"
 echo "" >&3
 echo "==> Cleaning cache..." >&3
 if [ "$OS" = "Opensource" ]; then
-    rm -rf /var/cache/opkg/* >/dev/null 2>&1
-    rm -rf /var/lib/opkg/lists/* >/dev/null 2>&1
-    rm -rf /run/opkg.lock >/dev/null 2>&1
+    rm -rf /var/cache/opkg/* 2>/dev/null
+    rm -rf /var/lib/opkg/lists/* 2>/dev/null
+    rm -f /run/opkg.lock 2>/dev/null
     echo "✔ opkg cache cleaned" >&3
     opkg update >/dev/null 2>&1 && echo "✔ Feeds updated" >&3 || echo "⚠ Failed to update feeds" >&3
 elif [ "$OS" = "DreamOS" ]; then
@@ -105,12 +83,11 @@ run_script() {
     local tmp_script="/tmp/plugin_installer_$(date +%s)_$$.sh"
     echo "▶ Downloading $url..." >&3
     
-    set +e
-    
     if wget -q --timeout=10 --tries=2 -O "$tmp_script" "$url"; then
         if [ -s "$tmp_script" ]; then
             chmod +x "$tmp_script"
-            (bash "$tmp_script") >&3 2>&1
+           
+            bash "$tmp_script" >&3 2>&1
             local exit_code=$?
             if [ $exit_code -eq 0 ]; then
                 echo "✔ Script $url executed successfully" >&3
@@ -125,8 +102,6 @@ run_script() {
     else
         echo "⚠ Failed to download script $url - Continuing..." >&3
     fi
-    
-    set -e
 }
 
 echo "" >&3
@@ -135,36 +110,28 @@ urls=(
     "http://dreambox4u.com/emilnabil237/plugins/ajpanel/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/ajpanel/new/emil-panel-lite.sh"
     "https://dreambox4u.com/emilnabil237/plugins/ArabicSavior/installer.sh"
-
-"http://dreambox4u.com/emilnabil237/script/bootlogoswapper-Atv.sh"
-    "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/cccaminfo/cccaminfo_${PYTHON,,}.sh"
+    "http://dreambox4u.com/emilnabil237/script/bootlogoswapper-Atv.sh"
+    "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/cccaminfo/cccaminfo_$(echo ${PYTHON} | tr '[:upper:]' '[:lower:]').sh"
     "https://dreambox4u.com/emilnabil237/plugins/crashlogviewer/CrashLogViewer.sh"
-    "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/EmilPanel/emilpanel.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/EmilPanelPro/emilpanelpro.sh"
     "https://dreambox4u.com/emilnabil237/plugins/Epg-Grabber/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/iptosat/installer.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/ipaudio/ipaudio-$IPAUDIO_VER.sh"
+    "https://dreambox4u.com/emilnabil237/plugins/ipaudio/ipaudio-${IPAUDIO_VER}.sh"
     "https://dreambox4u.com/emilnabil237/plugins/jedimakerxtream/installer.sh"
     "https://dreambox4u.com/emilnabil237/KeyAdder/installer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MultiCamAdder/installer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MultiIptvAdder/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/NewVirtualKeyBoard/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/RaedQuickSignal/installer.sh"
-    "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/SmartAddonspanel/smart-Panel.sh"
-
-"https://raw.githubusercontent.com/popking159/skins/refs/heads/main/aglareatv/installer.sh"
-
-"https://raw.githubusercontent.com/islam-2412/IPKS/refs/heads/main/fury/installer.sh"
-
-"https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MyMetrixLiteBackup.sh"
+    "https://raw.githubusercontent.com/popking159/skins/refs/heads/main/aglareatv/installer.sh"
+    "https://raw.githubusercontent.com/islam-2412/IPKS/refs/heads/main/fury/installer.sh"
+    "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MyMetrixLiteBackup.sh"
     "https://dreambox4u.com/emilnabil237/plugins/xtreamity/installer.sh"
     "https://dreambox4u.com/emilnabil237/emu/installer-cccam.sh"
     "https://dreambox4u.com/emilnabil237/emu/installer-ncam.sh"
     "https://raw.githubusercontent.com/levi-45/Levi45Emulator/main/installer.sh"
     "https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openatv/channel.sh"
 )
-
-set +e
 
 if [ -n "$PYTHON" ]; then
     for url in "${urls[@]}"; do
@@ -175,40 +142,41 @@ else
     echo "⚠ Python version not detected, skipping plugin installation" >&3
 fi
 
-set -e
-
 echo "" >&3
 echo "==> Cleaning temporary files..." >&3
+
 find /tmp -name "plugin_installer_*.sh" -delete 2>/dev/null && echo "✔ Temporary files cleaned" >&3 || echo "⚠ No temporary files found to clean" >&3
 
 echo "Done ✔" >&3
 echo "#>>>>>> Uploaded By Emil Nabil <<<<<<<#" >&3
 echo "✔ All steps completed!" >&3
 
+sleep 5
+
 echo "🔁 Rebooting device to apply changes..." >&3
 sleep 4
 
-unset -f reboot init shutdown killall systemctl 2>/dev/null
+if command -v killall >/dev/null 2>&1; then
+    echo "📱 Restarting enigma2..." >&3
+    killall enigma2 2>/dev/null
+    sleep 3
+fi
 
 if command -v reboot >/dev/null 2>&1; then
     echo "✅ Using reboot command" >&3
     sleep 2
-    command reboot
+    reboot
 elif command -v init >/dev/null 2>&1; then
     echo "✅ Using init 6 command" >&3
     sleep 2
-    command init 6
+    init 6
 elif command -v systemctl >/dev/null 2>&1; then
     echo "✅ Using systemctl reboot command" >&3
     sleep 2
-    command systemctl reboot
+    systemctl reboot
 else
     echo "❌ Reboot failed - no reboot command found" >&3
     echo "❌ Please reboot manually" >&3
-    if command -v killall >/dev/null 2>&1; then
-        echo "📱 Attempting to restart enigma2..." >&3
-        killall enigma2 2>/dev/null
-    fi
 fi
 
 echo "Script finished at: $(date)" >&3
