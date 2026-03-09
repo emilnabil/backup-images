@@ -83,6 +83,29 @@ else
     echo "⚠ Failed to download update script" >&3
 fi
 
+echo "Downloading package ..." >&3
+if curl -k -L --connect-timeout 60 --max-time 600 \
+    "https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-egami/backup-egami.tar.gz" \
+    -o backup-egami.tar.gz 2>/dev/null; then
+    
+    if [ -s backup-egami.tar.gz ]; then
+        echo "Installing ...." >&3
+        if tar -xzf backup-egami.tar.gz -C / 2>/dev/null; then
+            echo "✔ Extraction completed" >&3
+        else
+            echo "⚠ Failed to extract package" >&3
+        fi
+    else
+        echo "⚠ Downloaded file is empty" >&3
+    fi
+else
+    echo "⚠ Failed to download package" >&3
+fi
+
+echo "Cleaning up..." >&3
+rm -f backup-egami.tar.gz
+sleep 3 
+
 IPAUDIO_VER="8.2"
 
 echo "" >&3
@@ -137,7 +160,6 @@ urls=(
     "https://dreambox4u.com/emilnabil237/plugins/ArabicSavior/installer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/cccaminfo/cccaminfo_${PYTHON,,}.sh"
     "https://dreambox4u.com/emilnabil237/plugins/crashlogviewer/CrashLogViewer.sh"
-    "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/EmilPanel/emilpanel.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/EmilPanelPro/emilpanelpro.sh"
     "https://dreambox4u.com/emilnabil237/plugins/Epg-Grabber/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/iptosat/installer.sh"
@@ -148,10 +170,8 @@ urls=(
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MultiIptvAdder/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/NewVirtualKeyBoard/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/RaedQuickSignal/installer.sh"
-    "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/SmartAddonspanel/smart-Panel.sh"
     "https://dreambox4u.com/emilnabil237/plugins/xtreamity/installer.sh"
-
-"https://raw.githubusercontent.com/emilnabil/channel-emil-nabil/main/installer.sh"
+    "https://raw.githubusercontent.com/emilnabil/channel-emil-nabil/main/installer.sh"
     "https://dreambox4u.com/emilnabil237/emu/installer-cccam.sh"
     "https://dreambox4u.com/emilnabil237/emu/installer-ncam.sh"
     "https://raw.githubusercontent.com/levi-45/Levi45Emulator/main/installer.sh"
@@ -176,28 +196,6 @@ find /tmp -name "plugin_installer_*.sh" -delete 2>/dev/null && echo "✔ Tempora
 
 echo "" >&3
 cd /tmp || { echo "⚠ Failed to change to /tmp directory" >&3; exit 1; }
-
-echo "Downloading package ..." >&3
-if curl -k -L --connect-timeout 60 --max-time 600 \
-    "https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-egami/backup-egami.tar.gz" \
-    -o backup-egami.tar.gz 2>/dev/null; then
-    
-    if [ -s backup-egami.tar.gz ]; then
-        echo "Installing ...." >&3
-        if tar -xzf backup-egami.tar.gz -C / 2>/dev/null; then
-            echo "✔ Extraction completed" >&3
-        else
-            echo "⚠ Failed to extract package" >&3
-        fi
-    else
-        echo "⚠ Downloaded file is empty" >&3
-    fi
-else
-    echo "⚠ Failed to download package" >&3
-fi
-
-echo "Cleaning up..." >&3
-rm -f backup-egami.tar.gz
 
 echo "Done ✔" >&3
 echo "#>>>>>> Uploaded By Emil Nabil <<<<<<<#" >&3
@@ -232,8 +230,5 @@ fi
 echo "Script finished at: $(date)" >&3
 
 exit 0
-
-
-
 
 
