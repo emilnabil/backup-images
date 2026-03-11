@@ -157,6 +157,8 @@ urls=(
     "https://dreambox4u.com/emilnabil237/emu/installer-cccam.sh"
     "https://dreambox4u.com/emilnabil237/emu/installer-ncam.sh"
     "https://raw.githubusercontent.com/levi-45/Levi45Emulator/main/installer.sh"
+
+"https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openatv/restore-settings.sh"
 )
 
 set +e
@@ -175,28 +177,6 @@ set -e
 echo "" >&3
 echo "==> Cleaning temporary files..." >&3
 find /tmp -name "plugin_installer_*.sh" -delete 2>/dev/null && echo "✔ Temporary files cleaned" >&3 || echo "⚠ No temporary files found to clean" >&3
-
-cd /tmp || exit 1
-if wget -q "https://github.com/emilnabil/backup-images/raw/refs/heads/main/Backup-OpenSpa/settings_backup_OpenSPA.tar.gz"; then
-    echo "Download completed successfully"
-else
-    echo "Download failed"
-    exit 1
-fi
-sleep 2
-if [ -f "settings_backup_OpenSPA.tar.gz" ]; then
-    tar -xzf settings_backup_OpenSPA.tar.gz -C /
-    rm -f settings_backup_OpenSPA.tar.gz
-else
-    echo "Backup file not found"
-    exit 1
-fi
-sleep 5
-rm -rf /var/cache/opkg/* 2>/dev/null
-rm -rf /var/lib/opkg/lists/* 2>/dev/null
-rm -f /run/opkg.lock 2>/dev/null
-sleep 5
-echo "Process completed successfully"
 
 echo "Done ✔" >&3
 echo "#>>>>>> Uploaded By Emil Nabil <<<<<<<#" >&3
@@ -231,12 +211,5 @@ fi
 echo "Script finished at: $(date)" >&3
 
 exit 0
-
-
-
-
-
-
-
 
 
