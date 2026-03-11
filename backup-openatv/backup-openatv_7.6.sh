@@ -130,8 +130,8 @@ urls=(
     "https://dreambox4u.com/emilnabil237/emu/installer-cccam.sh"
     "https://dreambox4u.com/emilnabil237/emu/installer-ncam.sh"
     "https://raw.githubusercontent.com/levi-45/Levi45Emulator/main/installer.sh"
-    "https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openatv/channel.sh"
-    "https://dreambox4u.com/emilnabil237/emu/installer-ncam.sh"
+
+"https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openatv/channel.sh"
     "https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openatv/restore-settings.sh"
 )
 
