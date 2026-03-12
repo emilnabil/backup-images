@@ -1,17 +1,17 @@
 #!/bin/sh
-## setup command=wget https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-egami/restore-settings.sh -O - | /bin/sh
+## setup command=wget https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openbh/restore-settings.sh -O - | /bin/sh
 ##################################
 cd /tmp || exit 1
-if wget -q "https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-egami/settings_backup_egami.tar.gz"; then
+if wget -q "https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openbh/settings_backup_OpenBH.tar.gz"; then
     echo "Download completed successfully"
 else
     echo "Download failed"
     exit 1
 fi
 sleep 2
-if [ -f "settings_backup_egami.tar.gz" ]; then
-    tar -xzf settings_backup_egami.tar.gz -C /
-    rm -f settings_backup_egami.tar.gz
+if [ -f "settings_backup_OpenBH.tar.gz" ]; then
+    tar -xzf settings_backup_OpenBH.tar.gz -C /
+    rm -f settings_backup_OpenBH.tar.gz
 else
     echo "Backup file not found"
     exit 1
