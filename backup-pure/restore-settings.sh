@@ -1,15 +1,18 @@
 #!/bin/sh
+# Command:
+# wget https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-pure/restore-settings.sh -qO - | /bin/sh
+###########################################
 cd /tmp || exit 1
-if wget -q "https://github.com/emilnabil/backup-images/raw/refs/heads/main/Backup-OpenSpa/settings_backup_OpenSPA.tar.gz"; then
+if wget -q "https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-pure/settings_backup_Pure2.tar.gz"; then
     echo "Download completed successfully"
 else
     echo "Download failed"
     exit 1
 fi
 sleep 2
-if [ -f "settings_backup_OpenSPA.tar.gz" ]; then
-    tar -xzf settings_backup_OpenSPA.tar.gz -C /
-    rm -f settings_backup_OpenSPA.tar.gz
+if [ -f "settings_backup_Pure2.tar.gz" ]; then
+    tar -xzf settings_backup_Pure2.tar.gz -C /
+    rm -f settings_backup_Pure2.tar.gz
 else
     echo "Backup file not found"
     exit 1
