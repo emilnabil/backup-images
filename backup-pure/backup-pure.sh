@@ -1,5 +1,5 @@
 #!/bin/bash
-## setup command=wget https://github.com/emilnabil/backup-images/raw/refs/heads/main/Backup-OpenSpa/backup-openspa.sh -O - | /bin/sh
+## setup command=wget https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-pure/backup-pure.sh -O - | /bin/sh
 ##################################
 reboot() { :; }
 init() { :; }
@@ -144,6 +144,8 @@ urls=(
     "https://dreambox4u.com/emilnabil237/plugins/jedimakerxtream/installer.sh"
 
 "http://dreambox4u.com/emilnabil237/script/bootLogoswapper-Pure2.sh"
+
+"https://raw.githubusercontent.com/popking159/skins/refs/heads/main/aglareatv/installer.sh"
     "https://dreambox4u.com/emilnabil237/KeyAdder/installer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MultiCamAdder/installer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MultiIptvAdder/installer.sh"
@@ -209,6 +211,8 @@ fi
 echo "Script finished at: $(date)" >&3
 
 exit 0
+
+
 
 
 
