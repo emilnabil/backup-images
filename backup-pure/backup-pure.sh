@@ -142,6 +142,8 @@ urls=(
     "https://dreambox4u.com/emilnabil237/plugins/iptosat/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/ipaudio/ipaudio-$IPAUDIO_VER.sh"
     "https://dreambox4u.com/emilnabil237/plugins/jedimakerxtream/installer.sh"
+
+"http://dreambox4u.com/emilnabil237/script/bootLogoswapper-Pure2.sh"
     "https://dreambox4u.com/emilnabil237/KeyAdder/installer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MultiCamAdder/installer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MultiIptvAdder/installer.sh"
@@ -149,16 +151,12 @@ urls=(
     "https://dreambox4u.com/emilnabil237/plugins/RaedQuickSignal/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/xtreamity/installer.sh"
 
-"https://raw.githubusercontent.com/popking159/skins/refs/heads/main/aglareatv/installer.sh"
-
-"https://raw.githubusercontent.com/islam-2412/IPKS/refs/heads/main/fury/installer.sh"
-
 "https://raw.githubusercontent.com/emilnabil/channel-emil-nabil/main/installer.sh"
     "https://dreambox4u.com/emilnabil237/emu/installer-cccam.sh"
     "https://dreambox4u.com/emilnabil237/emu/installer-ncam.sh"
     "https://raw.githubusercontent.com/levi-45/Levi45Emulator/main/installer.sh"
 
-"https://github.com/emilnabil/backup-images/raw/refs/heads/main/Backup-OpenSpa/restore-settings.sh"
+"https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-pure/restore-settings.sh"
 )
 
 set +e
@@ -211,6 +209,8 @@ fi
 echo "Script finished at: $(date)" >&3
 
 exit 0
+
+
 
 
 
