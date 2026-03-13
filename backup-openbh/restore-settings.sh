@@ -23,5 +23,4 @@ rm -f /run/opkg.lock 2>/dev/null
 sleep 5
 echo "Process completed successfully"
 sleep 5
-killall -9 enigma2 
 exit 0
