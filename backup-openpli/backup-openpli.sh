@@ -1,5 +1,5 @@
 #!/bin/bash
-## setup command=wget https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-egami/backup-egami.sh -O - | /bin/sh
+## setup command=wget https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openpli/backup-openpli.sh -O - | /bin/sh
 ##################################
 reboot() { :; }
 init() { :; }
@@ -153,6 +153,8 @@ urls=(
     "https://dreambox4u.com/emilnabil237/emu/installer-cccam.sh"
     "https://dreambox4u.com/emilnabil237/emu/installer-ncam.sh"
     "https://raw.githubusercontent.com/levi-45/Levi45Emulator/main/installer.sh"
+
+"https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openpli/restore-settings.sh"
 )
 
 set +e
@@ -205,8 +207,6 @@ fi
 echo "Script finished at: $(date)" >&3
 
 exit 0
-
-
 
 
 
