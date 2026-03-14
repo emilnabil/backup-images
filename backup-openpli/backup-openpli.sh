@@ -139,8 +139,12 @@ urls=(
     "https://dreambox4u.com/emilnabil237/plugins/crashlogviewer/CrashLogViewer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/EmilPanelPro/emilpanelpro.sh"
     "https://dreambox4u.com/emilnabil237/plugins/Epg-Grabber/installer.sh"
+
+"https://dreambox4u.com/emilnabil237/plugins/historyzap/installer1.sh"
     "https://dreambox4u.com/emilnabil237/plugins/iptosat/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/ipaudio/ipaudio-$IPAUDIO_VER.sh"
+
+"https://dreambox4u.com/emilnabil237/plugins/ipaudiopro/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/jedimakerxtream/installer.sh"
     "https://dreambox4u.com/emilnabil237/KeyAdder/installer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MultiCamAdder/installer.sh"
@@ -148,6 +152,10 @@ urls=(
     "https://dreambox4u.com/emilnabil237/plugins/NewVirtualKeyBoard/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/RaedQuickSignal/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/xtreamity/installer.sh"
+
+"https://raw.githubusercontent.com/popking159/skins/refs/heads/main/aglarepli/installer.sh"
+
+"https://raw.githubusercontent.com/Insprion80/Skins/main/xDreamy/installer.sh"
 
 "https://raw.githubusercontent.com/emilnabil/channel-emil-nabil/main/installer.sh"
     "https://dreambox4u.com/emilnabil237/emu/installer-cccam.sh"
@@ -207,6 +215,7 @@ fi
 echo "Script finished at: $(date)" >&3
 
 exit 0
+
 
 
 
