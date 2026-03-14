@@ -1,9 +1,9 @@
 #!/bin/sh
-## setup command=wget https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openpli/restore-settings.sh -O - | /bin/sh
+## setup command=wget https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openvix/restore-settings.sh -O - | /bin/sh
 ##################################
 cd /tmp || exit 1
 
-if wget -q "https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openpli/settings_backup_openPli.tar.gz"; then
+if wget -q "https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openvix/settings_backup_OpenVIX.tar.gz"; then
     echo "Download completed successfully"
 else
     echo "Download failed"
@@ -12,10 +12,10 @@ fi
 
 sleep 2
 
-if [ -f "settings_backup_openPli.tar.gz" ]; then
-    tar -xzf settings_backup_openPli.tar.gz -C /
+if [ -f "settings_backup_OpenVIX.tar.gz" ]; then
+    tar -xzf settings_backup_OpenVIX.tar.gz -C /
     sleep 3
-    rm -f settings_backup_openPli.tar.gz
+    rm -f settings_backup_OpenVIX.tar.gz
 else
     echo "Backup file not found"
     exit 1
