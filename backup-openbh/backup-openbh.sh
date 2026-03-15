@@ -174,9 +174,9 @@ urls=(
     "https://dreambox4u.com/emilnabil237/emu/installer-ncam.sh"
     "https://raw.githubusercontent.com/levi-45/Levi45Emulator/main/installer.sh"
 
-"https://raw.githubusercontent.com/emilnabil/channel-emil-nabil/main/installer.sh"
-
 "https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openbh/restore-settings.sh"
+
+"https://raw.githubusercontent.com/emilnabil/channel-emil-nabil/main/installer.sh"
 )
 
 set +e
@@ -232,6 +232,7 @@ fi
 echo "Script finished at: $(date)" >&3
 
 exit 0
+
 
 
 
