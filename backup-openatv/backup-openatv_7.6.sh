@@ -51,7 +51,6 @@ echo "==> Updating feed and packages..." >&3
 if wget -q --timeout=10 --tries=2 "https://raw.githubusercontent.com/emil237/updates-enigma/main/update-all-python.sh" -O /tmp/update-all-python.sh; then
     if [ -s /tmp/update-all-python.sh ]; then
         chmod +x /tmp/update-all-python.sh
-        
         bash /tmp/update-all-python.sh >&3 2>&1
         rm -f /tmp/update-all-python.sh
     else
@@ -82,11 +81,9 @@ run_script() {
     local url="$1"
     local tmp_script="/tmp/plugin_installer_$(date +%s)_$$.sh"
     echo "▶ Downloading $url..." >&3
-    
     if wget -q --timeout=10 --tries=2 -O "$tmp_script" "$url"; then
         if [ -s "$tmp_script" ]; then
             chmod +x "$tmp_script"
-           
             bash "$tmp_script" >&3 2>&1
             local exit_code=$?
             if [ $exit_code -eq 0 ]; then
@@ -131,8 +128,7 @@ urls=(
     "https://dreambox4u.com/emilnabil237/emu/installer-ncam.sh"
     "https://raw.githubusercontent.com/levi-45/Levi45Emulator/main/installer.sh"
     "https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openatv/restore-settings.sh"
-
-"https://raw.githubusercontent.com/emilnabil/channel-emil-nabil/main/installer.sh"
+    "https://raw.githubusercontent.com/emilnabil/channel-emil-nabil/main/installer.sh"
 )
 
 if [ -n "$PYTHON" ]; then
@@ -146,41 +142,14 @@ fi
 
 echo "" >&3
 echo "==> Cleaning temporary files..." >&3
-
 find /tmp -name "plugin_installer_*.sh" -delete 2>/dev/null && echo "✔ Temporary files cleaned" >&3 || echo "⚠ No temporary files found to clean" >&3
 
 echo "Done ✔" >&3
 echo "#>>>>>> Uploaded By Emil Nabil <<<<<<<#" >&3
 echo "✔ All steps completed!" >&3
 
-sleep 5
-
 echo "🔁 Rebooting device to apply changes..." >&3
 sleep 4
-
-if command -v killall >/dev/null 2>&1; then
-    echo "📱 Restarting enigma2..." >&3
-    killall enigma2 2>/dev/null
-    sleep 3
-fi
-
-if command -v reboot >/dev/null 2>&1; then
-    echo "✅ Using reboot command" >&3
-    sleep 2
-    reboot
-elif command -v init >/dev/null 2>&1; then
-    echo "✅ Using init 6 command" >&3
-    sleep 2
-    init 6
-elif command -v systemctl >/dev/null 2>&1; then
-    echo "✅ Using systemctl reboot command" >&3
-    sleep 2
-    systemctl reboot
-else
-    echo "❌ Reboot failed - no reboot command found" >&3
-    echo "❌ Please reboot manually" >&3
-fi
-
-echo "Script finished at: $(date)" >&3
+reboot
 
 exit 0
