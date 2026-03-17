@@ -188,36 +188,7 @@ echo "✔ All steps completed!" >&3
 
 echo "🔁 Rebooting device to apply changes..." >&3
 sleep 4
-
-unset -f reboot init shutdown killall systemctl 2>/dev/null
-
-if command -v reboot >/dev/null 2>&1; then
-    echo "✅ Using reboot command" >&3
-    sleep 2
-    command reboot
-elif command -v init >/dev/null 2>&1; then
-    echo "✅ Using init 6 command" >&3
-    sleep 2
-    command init 6
-elif command -v systemctl >/dev/null 2>&1; then
-    echo "✅ Using systemctl reboot command" >&3
-    sleep 2
-    command systemctl reboot
-else
-    echo "❌ Reboot failed - no reboot command found" >&3
-    echo "❌ Please reboot manually" >&3
-    if command -v killall >/dev/null 2>&1; then
-        echo "📱 Attempting to restart enigma2..." >&3
-        killall enigma2 2>/dev/null
-    fi
-fi
-
-echo "Script finished at: $(date)" >&3
+reboot
 
 exit 0
-
-
-
-
-
 
