@@ -158,7 +158,7 @@ urls=(
     "http://dreambox4u.com/emilnabil237/plugins/ajpanel/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/ajpanel/new/emil-panel-lite.sh"
     "https://dreambox4u.com/emilnabil237/plugins/ArabicSavior/installer.sh"
-    "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/cccaminfo/cccaminfo_${PYTHON,,}.sh"
+    "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/cccaminfo/cccaminfo_py3.sh"
     "https://dreambox4u.com/emilnabil237/plugins/crashlogviewer/CrashLogViewer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/EmilPanelPro/emilpanelpro.sh"
     "https://dreambox4u.com/emilnabil237/plugins/Epg-Grabber/installer.sh"
@@ -182,33 +182,28 @@ urls=(
 "https://raw.githubusercontent.com/emilnabil/channel-emil-nabil/main/installer.sh"
 )
 
-set +e
-
-if [ -n "$PYTHON" ]; then
-    for url in "${urls[@]}"; do
-        run_script "$url"
-        sleep 1
-    done
-else
-    echo "⚠ Python version not detected, skipping plugin installation" >&3
-fi
-
-set -e
+for url in "${urls[@]}"; do
+    run_script "$url"
+    sleep 1
+done
 
 echo "" >&3
 echo "==> Cleaning temporary files..." >&3
-find /tmp -name "plugin_installer_*.sh" -delete 2>/dev/null && echo "✔ Temporary files cleaned" >&3 || echo "⚠ No temporary files found to clean" >&3
-
-echo "" >&3
-cd /tmp || { echo "⚠ Failed to change to /tmp directory" >&3; exit 1; }
+find /tmp -name "plugin_installer_*.sh" -delete 2>/dev/null && echo "✔ Temporary files cleaned" >&3
 
 echo "Done ✔" >&3
 echo "#>>>>>> Uploaded By Emil Nabil <<<<<<<#" >&3
 echo "✔ All steps completed!" >&3
 
-echo "🔁 Rebooting device to apply changes..." >&3
-sleep 4
-reboot
+echo "🔁 FORCED REBOOT NOW..." >&3
+sleep 3
+
+sync
+echo 1 > /proc/sys/kernel/sysrq
+echo b > /proc/sysrq-trigger
+
+reboot -f
+init 6
 
 exit 0
 
