@@ -108,7 +108,7 @@ urls=(
     "https://dreambox4u.com/emilnabil237/plugins/ajpanel/new/emil-panel-lite.sh"
     "https://dreambox4u.com/emilnabil237/plugins/ArabicSavior/installer.sh"
     "http://dreambox4u.com/emilnabil237/script/bootlogoswapper-Atv.sh"
-    "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/cccaminfo/cccaminfo_$(echo ${PYTHON} | tr '[:upper:]' '[:lower:]').sh"
+    "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/cccaminfo/cccaminfo_py3.sh"
     "https://dreambox4u.com/emilnabil237/plugins/crashlogviewer/CrashLogViewer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/EmilPanelPro/emilpanelpro.sh"
     "https://dreambox4u.com/emilnabil237/plugins/Epg-Grabber/installer.sh"
