@@ -4,6 +4,7 @@
 
 LOG_FILE="/tmp/superscript_$(date +%F_%H-%M-%S).log"
 exec 3>&1 1>>"$LOG_FILE" 2>&1
+
 trap 'echo "⚠ Script interrupted. Check $LOG_FILE for details." >&3' INT TERM
 
 printf "\n\n" >&3
@@ -12,9 +13,6 @@ echo "     ★ Super_Script & Plugin Installer by Emil Nabil ★" >&3
 echo "             Version: February 2026" >&3
 echo "===========================================================" >&3
 echo "Started at: $(date)" >&3
-echo "" >&3
-echo "Install tools & packages" >&3
-echo "Install useful plugins" >&3
 echo "" >&3
 
 echo "==> Gathering system info..." >&3
@@ -26,9 +24,9 @@ echo "" >&3
 echo "==> Detecting OS..." >&3
 OS="Unknown"
 if command -v apt-get >/dev/null 2>&1; then
-    OS='DreamOS'
+    OS="DreamOS"
 elif command -v opkg >/dev/null 2>&1; then
-    OS='Opensource'
+    OS="Opensource"
 fi
 echo "✔ Detected OS: $OS" >&3
 echo "" >&3
@@ -37,24 +35,18 @@ echo "==> Checking Python version..." >&3
 PYTHON=""
 if command -v python3 >/dev/null 2>&1 && python3 --version 2>&1 | grep -q '^Python 3\.'; then
     echo "✔ You have Python3" >&3
-    PYTHON='PY3'
+    PYTHON="PY3"
 elif command -v python >/dev/null 2>&1 && python --version 2>&1 | grep -q '^Python 2\.'; then
     echo "✔ You have Python2" >&3
-    PYTHON='PY2'
+    PYTHON="PY2"
 else
-    echo "⚠ Python 2 or 3 is required but not found, continuing anyway" >&3
-    PYTHON='PY2'
+    echo "⚠ Python not found, continuing anyway" >&3
 fi
 echo "" >&3
 
-IPAUDIO_VER="8.2"
-
-echo "" >&3
 echo "==> Cleaning cache..." >&3
 if [ "$OS" = "Opensource" ]; then
-    rm -rf /var/cache/opkg/* 2>/dev/null
-    rm -rf /var/lib/opkg/lists/* 2>/dev/null
-    rm -f /run/opkg.lock 2>/dev/null
+    rm -rf /var/cache/opkg/* /var/lib/opkg/lists/* /run/opkg.lock 2>/dev/null
     echo "✔ opkg cache cleaned" >&3
     opkg update >/dev/null 2>&1 && echo "✔ Feeds updated" >&3 || echo "⚠ Failed to update feeds" >&3
 elif [ "$OS" = "DreamOS" ]; then
@@ -67,56 +59,61 @@ fi
 run_script() {
     local url="$1"
     local tmp_script="/tmp/plugin_installer_$(date +%s)_$$.sh"
+
     echo "▶ Downloading $url..." >&3
+
     if wget -q --timeout=10 --tries=2 -O "$tmp_script" "$url"; then
         if [ -s "$tmp_script" ]; then
             chmod +x "$tmp_script"
-            bash "$tmp_script" >&3 2>&1
-            local exit_code=$?
+            /bin/sh "$tmp_script" >&3 2>&1
+            exit_code=$?
+
             if [ $exit_code -eq 0 ]; then
-                echo "✔ Script $url executed successfully" >&3
+                echo "✔ Script executed successfully: $url" >&3
             else
-                echo "⚠ Failed to execute script $url (exit code: $exit_code) - Continuing..." >&3
+                echo "⚠ Script failed ($exit_code): $url" >&3
             fi
+
             rm -f "$tmp_script"
         else
-            echo "⚠ Downloaded script $url is empty - Continuing..." >&3
+            echo "⚠ Empty script: $url" >&3
             rm -f "$tmp_script"
         fi
     else
-        echo "⚠ Failed to download script $url - Continuing..." >&3
+        echo "⚠ Download failed: $url" >&3
     fi
 }
 
 echo "" >&3
-echo "==> Installing Plugins for $PYTHON ..." >&3
+echo "==> Installing Plugins..." >&3
+
 urls=(
     "http://dreambox4u.com/emilnabil237/plugins/ajpanel/installer.sh"
     "https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openatv/restore-settings.sh"
     "https://raw.githubusercontent.com/emilnabil/channel-emil-nabil/main/installer.sh"
 )
 
-if [ -n "$PYTHON" ]; then
-    for url in "${urls[@]}"; do
-        run_script "$url"
-        sleep 1
-    done
-else
-    echo "⚠ Python version not detected, skipping plugin installation" >&3
-fi
+for url in "${urls[@]}"; do
+    run_script "$url"
+    sleep 1
+done
 
 echo "" >&3
 echo "==> Cleaning temporary files..." >&3
-find /tmp -name "plugin_installer_*.sh" -delete 2>/dev/null && echo "✔ Temporary files cleaned" >&3 || echo "⚠ No temporary files found to clean" >&3
+find /tmp -name "plugin_installer_*.sh" -delete 2>/dev/null && echo "✔ Temporary files cleaned" >&3
 
 echo "Done ✔" >&3
 echo "#>>>>>> Uploaded By Emil Nabil <<<<<<<#" >&3
 echo "✔ All steps completed!" >&3
 
-echo "🔁 Rebooting device to apply changes..." >&3
-sleep 4
-reboot
-sleep 
+echo "🔁 Rebooting NOW (forced)..." >&3
+sleep 3
+
+sync
+echo 1 > /proc/sys/kernel/sysrq
+echo b > /proc/sysrq-trigger
+
+reboot -f
 init 6
 
 exit 0
