@@ -47,19 +47,6 @@ else
 fi
 echo "" >&3
 
-echo "==> Updating feed and packages..." >&3
-if wget -q --timeout=10 --tries=2 "https://raw.githubusercontent.com/emil237/updates-enigma/main/update-all-python.sh" -O /tmp/update-all-python.sh; then
-    if [ -s /tmp/update-all-python.sh ]; then
-        chmod +x /tmp/update-all-python.sh
-        bash /tmp/update-all-python.sh >&3 2>&1
-        rm -f /tmp/update-all-python.sh
-    else
-        echo "⚠ Update script is empty" >&3
-    fi
-else
-    echo "⚠ Failed to download update script" >&3
-fi
-
 IPAUDIO_VER="8.2"
 
 echo "" >&3
@@ -105,28 +92,6 @@ echo "" >&3
 echo "==> Installing Plugins for $PYTHON ..." >&3
 urls=(
     "http://dreambox4u.com/emilnabil237/plugins/ajpanel/installer.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/ajpanel/new/emil-panel-lite.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/ArabicSavior/installer.sh"
-    "http://dreambox4u.com/emilnabil237/script/bootlogoswapper-Atv.sh"
-    "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/cccaminfo/cccaminfo_py3.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/crashlogviewer/CrashLogViewer.sh"
-    "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/EmilPanelPro/emilpanelpro.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/Epg-Grabber/installer.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/iptosat/installer.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/ipaudio/ipaudio-${IPAUDIO_VER}.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/jedimakerxtream/installer.sh"
-    "https://dreambox4u.com/emilnabil237/KeyAdder/installer.sh"
-    "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MultiCamAdder/installer.sh"
-    "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MultiIptvAdder/installer.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/NewVirtualKeyBoard/installer.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/RaedQuickSignal/installer.sh"
-    "https://raw.githubusercontent.com/popking159/skins/refs/heads/main/aglareatv/installer.sh"
-    "https://raw.githubusercontent.com/islam-2412/IPKS/refs/heads/main/fury/installer.sh"
-    "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MyMetrixLiteBackup.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/xtreamity/installer.sh"
-    "https://dreambox4u.com/emilnabil237/emu/installer-cccam.sh"
-    "https://dreambox4u.com/emilnabil237/emu/installer-ncam.sh"
-    "https://raw.githubusercontent.com/levi-45/Levi45Emulator/main/installer.sh"
     "https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openatv/restore-settings.sh"
     "https://raw.githubusercontent.com/emilnabil/channel-emil-nabil/main/installer.sh"
 )
@@ -151,5 +116,7 @@ echo "✔ All steps completed!" >&3
 echo "🔁 Rebooting device to apply changes..." >&3
 sleep 4
 reboot
+sleep 
+init 6
 
 exit 0
