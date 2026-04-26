@@ -2,6 +2,37 @@
 ## setup command=wget https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openatv/backup-openatv_7.6.sh -O - | /bin/sh
 ##################################
 
+reboot() {
+    :
+}
+init() {
+    :
+}
+shutdown() {
+    :
+}
+killall() {
+    for arg in "$@"; do
+        if [ "$arg" = "enigma2" ]; then
+            :
+            return 0
+        fi
+    done
+    :
+    return 0
+}
+systemctl() {
+    case "$1" in
+        reboot|poweroff|halt|shutdown|restart)
+            :
+            ;;
+        *)
+            command systemctl "$@"
+            ;;
+    esac
+}
+export -f reboot init shutdown killall systemctl
+
 LOG_FILE="/tmp/superscript_$(date +%F_%H-%M-%S).log"
 exec 3>&1 1>>"$LOG_FILE" 2>&1
 
@@ -109,12 +140,12 @@ urls=(
     "https://dreambox4u.com/emilnabil237/plugins/ArabicSavior/installer.sh"
     "http://dreambox4u.com/emilnabil237/script/bootlogoswapper-Atv.sh"
     "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/cccaminfo/cccaminfo_py3.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/crashlogviewer/CrashLogViewer.sh"
+    "https://dreambox4u.com/emilnabil237/plugins/crashlogviewer/crashlogviewer_1.9.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/EmilPanelPro/emilpanelpro.sh"
     "https://dreambox4u.com/emilnabil237/plugins/Epg-Grabber/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/iptosat/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/ipaudio/ipaudio-${IPAUDIO_VER}.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/jedimakerxtream/installer.sh"
+    "http://dreambox4u.com/emilnabil237/plugins/BouquetMakerXtream/installer.sh"
     "https://dreambox4u.com/emilnabil237/KeyAdder/installer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MultiCamAdder/installer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MultiIptvAdder/installer.sh"
