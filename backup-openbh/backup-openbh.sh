@@ -1,21 +1,30 @@
 #!/bin/bash
 ## setup command=wget https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openbh/backup-openbh.sh -O - | /bin/sh
+##################################
 
-reboot() { :; }
-init() { :; }
-shutdown() { :; }
+reboot() {
+    :
+}
+init() {
+    :
+}
+shutdown() {
+    :
+}
 killall() {
     for arg in "$@"; do
         if [ "$arg" = "enigma2" ]; then
+            :
             return 0
         fi
     done
+    :
     return 0
 }
 systemctl() {
     case "$1" in
         reboot|poweroff|halt|shutdown|restart)
-            return 0
+            :
             ;;
         *)
             command systemctl "$@"
@@ -26,6 +35,7 @@ export -f reboot init shutdown killall systemctl
 
 LOG_FILE="/tmp/superscript_$(date +%F_%H-%M-%S).log"
 exec 3>&1 1>>"$LOG_FILE" 2>&1
+
 trap 'echo "⚠ Script interrupted. Check $LOG_FILE for details." >&3' INT TERM
 
 printf "\n\n" >&3
@@ -34,9 +44,6 @@ echo "     ★ Super_Script & Plugin Installer by Emil Nabil ★" >&3
 echo "             Version: February 2026" >&3
 echo "===========================================================" >&3
 echo "Started at: $(date)" >&3
-echo "" >&3
-echo "Install tools & packages" >&3
-echo "Install useful plugins" >&3
 echo "" >&3
 
 echo "==> Gathering system info..." >&3
@@ -48,9 +55,9 @@ echo "" >&3
 echo "==> Detecting OS..." >&3
 OS="Unknown"
 if command -v apt-get >/dev/null 2>&1; then
-    OS='DreamOS'
+    OS="DreamOS"
 elif command -v opkg >/dev/null 2>&1; then
-    OS='Opensource'
+    OS="Opensource"
 fi
 echo "✔ Detected OS: $OS" >&3
 echo "" >&3
@@ -59,13 +66,12 @@ echo "==> Checking Python version..." >&3
 PYTHON=""
 if command -v python3 >/dev/null 2>&1 && python3 --version 2>&1 | grep -q '^Python 3\.'; then
     echo "✔ You have Python3" >&3
-    PYTHON='PY3'
+    PYTHON="PY3"
 elif command -v python >/dev/null 2>&1 && python --version 2>&1 | grep -q '^Python 2\.'; then
     echo "✔ You have Python2" >&3
-    PYTHON='PY2'
+    PYTHON="PY2"
 else
-    echo "⚠ Python 2 or 3 is required but not found, continuing anyway" >&3
-    PYTHON='PY2'
+    echo "⚠ Python not found, continuing anyway" >&3
 fi
 echo "" >&3
 
@@ -73,8 +79,9 @@ echo "==> Updating feed and packages..." >&3
 if wget -q --timeout=10 --tries=2 "https://raw.githubusercontent.com/emil237/updates-enigma/main/update-all-python.sh" -O /tmp/update-all-python.sh; then
     if [ -s /tmp/update-all-python.sh ]; then
         chmod +x /tmp/update-all-python.sh
-        (bash /tmp/update-all-python.sh) >&3 2>&1
+        /bin/sh /tmp/update-all-python.sh >&3 2>&1
         rm -f /tmp/update-all-python.sh
+        echo "✔ Update script executed" >&3
     else
         echo "⚠ Update script is empty" >&3
     fi
@@ -82,36 +89,11 @@ else
     echo "⚠ Failed to download update script" >&3
 fi
 
-echo "Downloading package ..." >&3
-if curl -k -L --connect-timeout 60 --max-time 600 \
-    "https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openbh/backup-openbh.tar.gz" \
-    -o backup-openbh.tar.gz 2>/dev/null; then
-    
-    if [ -s backup-openbh.tar.gz ]; then
-        echo "Installing ...." >&3
-        if tar -xzf backup-openbh.tar.gz -C / 2>/dev/null; then
-            echo "✔ Extraction completed" >&3
-        else
-            echo "⚠ Failed to extract package" >&3
-        fi
-    else
-        echo "⚠ Downloaded file is empty" >&3
-    fi
-else
-    echo "⚠ Failed to download package" >&3
-fi
-
-echo "Cleaning up..." >&3
-rm -f backup-openbh.tar.gz
-
 IPAUDIO_VER="8.2"
 
-echo "" >&3
 echo "==> Cleaning cache..." >&3
 if [ "$OS" = "Opensource" ]; then
-    rm -rf /var/cache/opkg/* >/dev/null 2>&1
-    rm -rf /var/lib/opkg/lists/* >/dev/null 2>&1
-    rm -rf /run/opkg.lock >/dev/null 2>&1
+    rm -rf /var/cache/opkg/* /var/lib/opkg/lists/* /run/opkg.lock 2>/dev/null
     echo "✔ opkg cache cleaned" >&3
     opkg update >/dev/null 2>&1 && echo "✔ Feeds updated" >&3 || echo "⚠ Failed to update feeds" >&3
 elif [ "$OS" = "DreamOS" ]; then
@@ -124,45 +106,45 @@ fi
 run_script() {
     local url="$1"
     local tmp_script="/tmp/plugin_installer_$(date +%s)_$$.sh"
+
     echo "▶ Downloading $url..." >&3
-    
-    set +e
-    
+
     if wget -q --timeout=10 --tries=2 -O "$tmp_script" "$url"; then
         if [ -s "$tmp_script" ]; then
             chmod +x "$tmp_script"
-            (bash "$tmp_script") >&3 2>&1
-            local exit_code=$?
+            /bin/sh "$tmp_script" >&3 2>&1
+            exit_code=$?
+
             if [ $exit_code -eq 0 ]; then
-                echo "✔ Script $url executed successfully" >&3
+                echo "✔ Script executed: $url" >&3
             else
-                echo "⚠ Failed to execute script $url (exit code: $exit_code) - Continuing..." >&3
+                echo "⚠ Script failed ($exit_code): $url" >&3
             fi
+
             rm -f "$tmp_script"
         else
-            echo "⚠ Downloaded script $url is empty - Continuing..." >&3
+            echo "⚠ Empty script: $url" >&3
             rm -f "$tmp_script"
         fi
     else
-        echo "⚠ Failed to download script $url - Continuing..." >&3
+        echo "⚠ Download failed: $url" >&3
     fi
-    
-    set -e
 }
 
 echo "" >&3
 echo "==> Installing Plugins for $PYTHON ..." >&3
+
 urls=(
     "http://dreambox4u.com/emilnabil237/plugins/ajpanel/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/ajpanel/new/emil-panel-lite.sh"
     "https://dreambox4u.com/emilnabil237/plugins/ArabicSavior/installer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/cccaminfo/cccaminfo_${PYTHON,,}.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/crashlogviewer/CrashLogViewer.sh"
+    "https://dreambox4u.com/emilnabil237/plugins/crashlogviewer/crashlogviewer_1.9.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/EmilPanelPro/emilpanelpro.sh"
     "https://dreambox4u.com/emilnabil237/plugins/Epg-Grabber/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/iptosat/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/ipaudio/ipaudio-$IPAUDIO_VER.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/jedimakerxtream/installer.sh"
+    "http://dreambox4u.com/emilnabil237/plugins/BouquetMakerXtream/installer.sh"
     "https://dreambox4u.com/emilnabil237/KeyAdder/installer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MultiCamAdder/installer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MultiIptvAdder/installer.sh"
@@ -187,6 +169,26 @@ done
 echo "" >&3
 echo "==> Cleaning temporary files..." >&3
 find /tmp -name "plugin_installer_*.sh" -delete 2>/dev/null && echo "✔ Temporary files cleaned" >&3
+
+echo "==> Downloading backup package..." >&3
+if wget -q --timeout=10 --tries=2 \
+    "https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openbh/backup-openbh.tar.gz" \
+    -O /tmp/backup-openbh.tar.gz; then
+    
+    if [ -s /tmp/backup-openbh.tar.gz ]; then
+        echo "==> Installing backup..." >&3
+        if tar -xzf /tmp/backup-openbh.tar.gz -C /; then
+            echo "✔ backup installed" >&3
+        else
+            echo "⚠ Failed to extract backup" >&3
+        fi
+    else
+        echo "⚠ Downloaded backup is empty" >&3
+    fi
+else
+    echo "⚠ Failed to download backup package" >&3
+fi
+rm -f /tmp/backup-openbh.tar.gz
 
 echo "Done ✔" >&3
 echo "#>>>>>> Uploaded By Emil Nabil <<<<<<<#" >&3
