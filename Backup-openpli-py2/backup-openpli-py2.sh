@@ -1,5 +1,5 @@
 #!/bin/bash
-## setup command=wget https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openpli/backup-openpli.sh -O - | /bin/sh
+## setup command=wget https://github.com/emilnabil/backup-images/raw/refs/heads/main/Backup-openpli-py2/backup-openpli-py2.sh -O - | /bin/sh
 ##################################
 
 reboot() {
@@ -190,4 +190,5 @@ reboot -f
 init 6
 
 exit 0
+
 
