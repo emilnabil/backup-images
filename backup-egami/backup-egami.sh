@@ -89,26 +89,6 @@ else
     echo "⚠ Failed to download update script" >&3
 fi
 
-echo "==> Downloading Egami backup package..." >&3
-if wget -q --timeout=10 --tries=2 \
-    "https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-egami/backup-egami.tar.gz" \
-    -O /tmp/backup-egami.tar.gz; then
-    
-    if [ -s /tmp/backup-egami.tar.gz ]; then
-        echo "==> Installing Egami backup..." >&3
-        if tar -xzf /tmp/backup-egami.tar.gz -C /; then
-            echo "✔ Egami backup installed" >&3
-        else
-            echo "⚠ Failed to extract backup" >&3
-        fi
-    else
-        echo "⚠ Downloaded backup is empty" >&3
-    fi
-else
-    echo "⚠ Failed to download backup package" >&3
-fi
-rm -f /tmp/backup-egami.tar.gz
-
 IPAUDIO_VER="8.2"
 
 echo "==> Cleaning cache..." >&3
@@ -156,14 +136,12 @@ echo "==> Installing Plugins for $PYTHON ..." >&3
 
 urls=(
     "http://dreambox4u.com/emilnabil237/plugins/ajpanel/installer.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/ajpanel/new/emil-panel-lite.sh"
     "https://dreambox4u.com/emilnabil237/plugins/ArabicSavior/installer.sh"
     "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/cccaminfo/cccaminfo_py3.sh"
     "https://dreambox4u.com/emilnabil237/plugins/crashlogviewer/crashlogviewer_1.9.sh"
-    "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/EmilPanelPro/emilpanelpro.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/Epg-Grabber/installer.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/iptosat/installer.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/ipaudio/ipaudio-${IPAUDIO_VER}.sh"
+    "https://dreambox4u.com/emilnabil237/plugins/Epg-Grabber/installer.sh" 
+    "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/ip2sat/ip2sat.sh"
+    "http://dreambox4u.com/emilnabil237/plugins/AudioPlus/AudioPlus.sh"
     "http://dreambox4u.com/emilnabil237/plugins/BouquetMakerXtream/installer.sh"
     "https://dreambox4u.com/emilnabil237/KeyAdder/installer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MultiCamAdder/installer.sh"
@@ -172,6 +150,7 @@ urls=(
     "https://dreambox4u.com/emilnabil237/plugins/RaedQuickSignal/installer.sh"
     "https://raw.githubusercontent.com/popking159/skins/refs/heads/main/aglareatv/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/xtreamity/installer.sh"
+    "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/Xtream2Audio/Xtream2Audio.sh"
     "https://dreambox4u.com/emilnabil237/emu/installer-cccam.sh"
     "https://dreambox4u.com/emilnabil237/emu/installer-ncam.sh"
     "https://raw.githubusercontent.com/levi-45/Levi45Emulator/main/installer.sh"
@@ -188,6 +167,26 @@ echo "" >&3
 echo "==> Cleaning temporary files..." >&3
 find /tmp -name "plugin_installer_*.sh" -delete 2>/dev/null && echo "✔ Temporary files cleaned" >&3
 
+echo "==> Downloading Egami backup package..." >&3
+if wget -q --timeout=10 --tries=2 \
+    "https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-egami/backup-egami.tar.gz" \
+    -O /tmp/backup-egami.tar.gz; then
+    
+    if [ -s /tmp/backup-egami.tar.gz ]; then
+        echo "==> Installing Egami backup..." >&3
+        if tar -xzf /tmp/backup-egami.tar.gz -C /; then
+            echo "✔ Egami backup installed" >&3
+        else
+            echo "⚠ Failed to extract backup" >&3
+        fi
+    else
+        echo "⚠ Downloaded backup is empty" >&3
+    fi
+else
+    echo "⚠ Failed to download backup package" >&3
+fi
+rm -f /tmp/backup-egami.tar.gz
+
 echo "Done ✔" >&3
 echo "#>>>>>> Uploaded By Emil Nabil <<<<<<<#" >&3
 echo "✔ All steps completed!" >&3
@@ -203,5 +202,7 @@ reboot -f
 init 6
 
 exit 0
+
+
 
 
