@@ -136,14 +136,12 @@ echo "==> Installing Plugins for $PYTHON ..." >&3
 
 urls=(
     "http://dreambox4u.com/emilnabil237/plugins/ajpanel/installer.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/ajpanel/new/emil-panel-lite.sh"
+    "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/ip2sat/ip2sat.sh"
     "https://dreambox4u.com/emilnabil237/plugins/ArabicSavior/installer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/cccaminfo/cccaminfo_${PYTHON,,}.sh"
     "https://dreambox4u.com/emilnabil237/plugins/crashlogviewer/crashlogviewer_1.9.sh"
-    "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/EmilPanelPro/emilpanelpro.sh"
+    "http://dreambox4u.com/emilnabil237/plugins/AudioPlus/AudioPlus.sh"
     "https://dreambox4u.com/emilnabil237/plugins/Epg-Grabber/installer.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/iptosat/installer.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/ipaudio/ipaudio-$IPAUDIO_VER.sh"
     "http://dreambox4u.com/emilnabil237/plugins/BouquetMakerXtream/installer.sh"
     "https://dreambox4u.com/emilnabil237/KeyAdder/installer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MultiCamAdder/installer.sh"
@@ -151,6 +149,8 @@ urls=(
     "https://dreambox4u.com/emilnabil237/plugins/NewVirtualKeyBoard/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/RaedQuickSignal/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/xtreamity/installer.sh"
+
+"https://github.com/emilnabil/download-plugins/raw/refs/heads/main/Xtream2Audio/Xtream2Audio.sh"
     "https://raw.githubusercontent.com/popking159/skins/refs/heads/main/aglarepli/installer.sh"
     "https://dreambox4u.com/emilnabil237/emu/installer-cccam.sh"
     "https://dreambox4u.com/emilnabil237/emu/installer-ncam.sh"
@@ -205,4 +205,5 @@ reboot -f
 init 6
 
 exit 0
+
 
