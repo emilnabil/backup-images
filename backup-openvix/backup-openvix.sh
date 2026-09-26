@@ -89,7 +89,7 @@ else
     echo "⚠ Failed to download update script" >&3
 fi
 
-IPAUDIO_VER="8.2"
+IPAUDIO_VER="7.4"
 
 if [ "$PYTHON" = "PY3" ]; then
     CCCAMINFO_URL="https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/cccaminfo/cccaminfo_py3.sh"
@@ -142,14 +142,13 @@ echo "==> Installing Plugins for $PYTHON ..." >&3
 
 urls=(
     "http://dreambox4u.com/emilnabil237/plugins/ajpanel/installer.sh"
-    "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/Xtream2Audio/Xtream2Audio.sh"
     "https://dreambox4u.com/emilnabil237/plugins/ArabicSavior/installer.sh"
     "$CCCAMINFO_URL"
     "https://dreambox4u.com/emilnabil237/plugins/crashlogviewer/crashlogviewer_1.9.sh"
     "https://dreambox4u.com/emilnabil237/plugins/Epg-Grabber/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/historyzap/installer1.sh"
-    "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/ip2sat/ip2sat.sh"
-    "http://dreambox4u.com/emilnabil237/plugins/AudioPlus/AudioPlus.sh"
+    "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/iptosat/iptosat_1.9.sh"
+    "https://dreambox4u.com/emilnabil237/plugins/ipaudio/ipaudio-7.4-ffmpeg.sh"
     "https://dreambox4u.com/emilnabil237/plugins/ipaudiopro/installer.sh"
     "http://dreambox4u.com/emilnabil237/plugins/BouquetMakerXtream/installer.sh"
     "https://dreambox4u.com/emilnabil237/KeyAdder/installer.sh"
@@ -194,5 +193,6 @@ reboot -f
 init 6
 
 exit 0
+
 
 
