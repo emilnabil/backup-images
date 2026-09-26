@@ -89,7 +89,7 @@ else
     echo "⚠ Failed to download update script" >&3
 fi
 
-IPAUDIO_VER="8.2"
+IPAUDIO_VER="7.4"
 
 echo "==> Cleaning cache..." >&3
 if [ "$OS" = "Opensource" ]; then
@@ -139,9 +139,9 @@ urls=(
     "https://dreambox4u.com/emilnabil237/plugins/ArabicSavior/installer.sh"
     "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/cccaminfo/cccaminfo_py3.sh"
     "https://dreambox4u.com/emilnabil237/plugins/crashlogviewer/crashlogviewer_1.9.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/Epg-Grabber/installer.sh" 
-    "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/ip2sat/ip2sat.sh"
-    "http://dreambox4u.com/emilnabil237/plugins/AudioPlus/AudioPlus.sh"
+    "https://dreambox4u.com/emilnabil237/plugins/Epg-Grabber/installer.sh"
+    "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/iptosat/iptosat_1.9.sh"
+    "https://dreambox4u.com/emilnabil237/plugins/ipaudio/ipaudio-7.4-ffmpeg.sh"
     "http://dreambox4u.com/emilnabil237/plugins/BouquetMakerXtream/installer.sh"
     "https://dreambox4u.com/emilnabil237/KeyAdder/installer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MultiCamAdder/installer.sh"
@@ -150,7 +150,6 @@ urls=(
     "https://dreambox4u.com/emilnabil237/plugins/RaedQuickSignal/installer.sh"
     "https://raw.githubusercontent.com/popking159/skins/refs/heads/main/aglareatv/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/xtreamity/installer.sh"
-    "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/Xtream2Audio/Xtream2Audio.sh"
     "https://dreambox4u.com/emilnabil237/emu/installer-cccam.sh"
     "https://dreambox4u.com/emilnabil237/emu/installer-ncam.sh"
     "https://raw.githubusercontent.com/levi-45/Levi45Emulator/main/installer.sh"
@@ -202,6 +201,8 @@ reboot -f
 init 6
 
 exit 0
+
+
 
 
 
