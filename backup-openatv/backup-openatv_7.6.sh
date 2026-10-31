@@ -149,6 +149,8 @@ urls=(
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MultiIptvAdder/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/NewVirtualKeyBoard/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/RaedQuickSignal/installer.sh"
+
+"https://dreambox4u.com/emilnabil237/plugins/PiconMaker/PiconMaker.sh"
     "https://raw.githubusercontent.com/popking159/skins/refs/heads/main/aglareatv/installer.sh"
     "https://raw.githubusercontent.com/islam-2412/IPKS/refs/heads/main/fury/installer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MyMetrixLiteBackup.sh"
