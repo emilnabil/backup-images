@@ -146,6 +146,8 @@ urls=(
     "https://dreambox4u.com/emilnabil237/KeyAdder/installer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MultiCamAdder/installer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MultiIptvAdder/installer.sh"
+
+"https://dreambox4u.com/emilnabil237/plugins/PiconMaker/PiconMaker.sh"
     "https://dreambox4u.com/emilnabil237/plugins/NewVirtualKeyBoard/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/RaedQuickSignal/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/xtreamity/installer.sh"
@@ -203,6 +205,7 @@ reboot -f
 init 6
 
 exit 0
+
 
 
 
