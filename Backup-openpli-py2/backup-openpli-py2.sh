@@ -141,9 +141,9 @@ echo "" >&3
 echo "==> Installing Plugins for $PYTHON ..." >&3
 
 urls=(
-    "http://dreambox4u.com/emilnabil237/plugins/ajpanel/installer.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/ajpanel/new/emil-panel-lite.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/ArabicSavior/installer.sh"
+    "https://github.com/AMAJamry/AJPanel/raw/main/installer.sh"
+    "https://github.com/fairbird/ArabicSavior/raw/refs/heads/main/installer.sh"
+    
     "$CCCAMINFO_URL"
     "https://dreambox4u.com/emilnabil237/plugins/crashlogviewer/crashlogviewer_1.9.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/EmilPanelPro/emilpanelpro.sh"
@@ -190,5 +190,6 @@ reboot -f
 init 6
 
 exit 0
+
 
 
