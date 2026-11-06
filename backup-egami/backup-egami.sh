@@ -135,8 +135,8 @@ echo "" >&3
 echo "==> Installing Plugins for $PYTHON ..." >&3
 
 urls=(
-    "http://dreambox4u.com/emilnabil237/plugins/ajpanel/installer.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/ArabicSavior/installer.sh"
+    "https://github.com/AMAJamry/AJPanel/raw/main/installer.sh"
+    "https://github.com/fairbird/ArabicSavior/raw/refs/heads/main/installer.sh"
     "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/cccaminfo/cccaminfo_py3.sh"
     "https://dreambox4u.com/emilnabil237/plugins/crashlogviewer/crashlogviewer_1.9.sh"
     "https://dreambox4u.com/emilnabil237/plugins/Epg-Grabber/installer.sh"
