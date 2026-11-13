@@ -138,22 +138,22 @@ urls=(
     "https://github.com/AMAJamry/AJPanel/raw/main/installer.sh"
     "https://github.com/fairbird/ArabicSavior/raw/refs/heads/main/installer.sh"
     "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/cccaminfo/cccaminfo_py3.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/crashlogviewer/crashlogviewer_1.9.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/Epg-Grabber/installer.sh"
+    "https://dreambox4u.com/emilnabil237/emil/plugins/crashlogviewer/crashlogviewer_1.9.sh"
+    "https://raw.githubusercontent.com/emil182/emil-Nabil/refs/heads/main/Epg-Grabber/installer.sh"
     "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/iptosat/iptosat_1.9.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/ipaudio/ipaudio-7.4-ffmpeg.sh"
-    "http://dreambox4u.com/emilnabil237/plugins/BouquetMakerXtream/installer.sh"
-    "https://dreambox4u.com/emilnabil237/KeyAdder/installer.sh"
+    "https://dreambox4u.com/emilnabil237/emil/plugins/ipaudio/ipaudio-7.4-ffmpeg.sh"
+    "http://dreambox4u.com/emilnabil237/emil/plugins/BouquetMakerXtream/installer.sh"
+    "https://dreambox4u.com/emilnabil237/emil/KeyAdder/installer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MultiCamAdder/installer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MultiIptvAdder/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/NewVirtualKeyBoard/installer.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/RaedQuickSignal/installer.sh"
-    "https://raw.githubusercontent.com/popking159/skins/refs/heads/main/aglareatv/installer.sh"
+    "https://dreambox4u.com/emilnabil237/emil/plugins/RaedQuickSignal/installer.sh"
+    "https://github.com/emil182/emil-Nabil/raw/refs/heads/main/skins-aglare-fhd/skins-aglare-fhd.sh"
 
 "https://dreambox4u.com/emilnabil237/plugins/PiconMaker/PiconMaker.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/xtreamity/installer.sh"
-    "https://dreambox4u.com/emilnabil237/emu/installer-cccam.sh"
-    "https://dreambox4u.com/emilnabil237/emu/installer-ncam.sh"
+    "https://dreambox4u.com/emilnabil237/emil/plugins/xtreamity/installer.sh"
+    "https://dreambox4u.com/emilnabil237/emil/emu/installer-cccam.sh"
+    "https://dreambox4u.com/emilnabil237/emil/emu/installer-ncam.sh"
     "https://raw.githubusercontent.com/levi-45/Levi45Emulator/main/installer.sh"
     "https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-egami/restore-settings.sh"
     "https://raw.githubusercontent.com/emilnabil/channel-emil-nabil/main/installer.sh"
@@ -203,6 +203,8 @@ reboot -f
 init 6
 
 exit 0
+
+
 
 
 
