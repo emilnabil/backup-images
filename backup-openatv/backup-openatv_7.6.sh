@@ -41,7 +41,7 @@ trap 'echo "⚠ Script interrupted. Check $LOG_FILE for details." >&3' INT TERM
 printf "\n\n" >&3
 echo "===========================================================" >&3
 echo "     ★ Super_Script & Plugin Installer by Emil Nabil ★" >&3
-echo "             Version: February 2026" >&3
+echo "             Version: November 2026" >&3
 echo "===========================================================" >&3
 echo "Started at: $(date)" >&3
 echo "" >&3
@@ -137,26 +137,26 @@ echo "==> Installing Plugins for $PYTHON ..." >&3
 urls=(
     "https://github.com/AMAJamry/AJPanel/raw/main/installer.sh"
     "https://github.com/fairbird/ArabicSavior/raw/refs/heads/main/installer.sh"
-    "http://dreambox4u.com/emilnabil237/script/bootlogoswapper-Atv.sh"
+    "http://dreambox4u.com/emilnabil237/emil/script/bootlogoswapper-Atv.sh"
     "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/cccaminfo/cccaminfo_py3.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/crashlogviewer/crashlogviewer_1.9.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/Epg-Grabber/installer.sh"
+    "https://dreambox4u.com/emilnabil237/emil/plugins/crashlogviewer/crashlogviewer_1.9.sh"
+    "https://raw.githubusercontent.com/emil182/emil-Nabil/refs/heads/main/Epg-Grabber/installer.sh"
     "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/iptosat/iptosat_1.9.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/ipaudio/ipaudio-7.4-ffmpeg.sh"
-    "http://dreambox4u.com/emilnabil237/plugins/BouquetMakerXtream/installer.sh"
-    "https://dreambox4u.com/emilnabil237/KeyAdder/installer.sh"
+    "https://dreambox4u.com/emilnabil237/emil/plugins/ipaudio/ipaudio-7.4-ffmpeg.sh"
+    "http://dreambox4u.com/emilnabil237/emil/plugins/BouquetMakerXtream/installer.sh"
+    "https://dreambox4u.com/emilnabil237/emil/KeyAdder/installer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MultiCamAdder/installer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MultiIptvAdder/installer.sh"
     "https://dreambox4u.com/emilnabil237/plugins/NewVirtualKeyBoard/installer.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/RaedQuickSignal/installer.sh"
+    "https://dreambox4u.com/emilnabil237/emil/plugins/RaedQuickSignal/installer.sh"
 
 "https://dreambox4u.com/emilnabil237/plugins/PiconMaker/PiconMaker.sh"
-    "https://raw.githubusercontent.com/popking159/skins/refs/heads/main/aglareatv/installer.sh"
+    "https://github.com/emil182/emil-Nabil/raw/refs/heads/main/skins-aglare-fhd/skins-aglare-fhd.sh"
     "https://raw.githubusercontent.com/islam-2412/IPKS/refs/heads/main/fury/installer.sh"
     "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MyMetrixLiteBackup.sh"
-    "https://dreambox4u.com/emilnabil237/plugins/xtreamity/installer.sh"
-    "https://dreambox4u.com/emilnabil237/emu/installer-cccam.sh"
-    "https://dreambox4u.com/emilnabil237/emu/installer-ncam.sh"
+    "https://dreambox4u.com/emilnabil237/emil/plugins/xtreamity/installer.sh"
+    "https://dreambox4u.com/emilnabil237/emil/emu/installer-cccam.sh"
+    "https://dreambox4u.com/emilnabil237/emil/emu/installer-ncam.sh"
     "https://raw.githubusercontent.com/levi-45/Levi45Emulator/main/installer.sh"
     "https://github.com/emilnabil/backup-images/raw/refs/heads/main/backup-openatv/restore-settings.sh"
     "https://raw.githubusercontent.com/emilnabil/channel-emil-nabil/main/installer.sh"
